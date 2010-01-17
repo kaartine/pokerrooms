@@ -1,4 +1,5 @@
-<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--
+	<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 	<html dir="LTR" lang="fi">
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -11,14 +12,14 @@
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	
 	</head>
-	
+-->
 
 <?php
 /**
  * Copyright Jukka Kaartinen 2010
  */
  
-require_once("rooms.txt");
+require_once("rooms.php");
 ?>
 	
 	<table cellpadding="0" cellspacing="0" width="100%" border="0">
@@ -38,13 +39,14 @@ require_once("rooms.txt");
 
 global $rooms;
 
+$count=1;
 foreach( $rooms as $room )
 {
 
 print('	  <tr> ');
-print('	    <td class="boxText"><a href="'.$room[2].'"><img src="http://127.0.0.1/~kaartine/rooms/'.$room[1].'" alt="" border="0"></a><a href="'. $room[2].'">'. $room[0] .'</a><br /><br /></td>');
+print('	    <td class="boxText">'. $count .'. <a href="'.$room[2].'"><img src="http://127.0.0.1/~kaartine/rooms/'.$room[1].'" alt="" border="0"></a><a href="'. $room[2].'">'. $room[0] .'</a><br /><br /></td>');
 print('	  </tr>');
-
+$count++;
 }
 ?>
 	   <tr>
