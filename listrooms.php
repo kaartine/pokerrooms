@@ -1,4 +1,4 @@
-<!--
+  <!--
 	<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 	<html dir="LTR" lang="fi">
 	<head>
@@ -22,37 +22,48 @@
 require_once("rooms.php");
 ?>
 	
-	<table cellpadding="0" cellspacing="0" width="100%" border="0">
-	  <tbody><tr>
-	    <td class="infoBoxHeading" height="14"><img src="images/infobox/corner_right_left.gif" alt="" height="14" width="11" border="0"></td>
-	    <td class="infoBoxHeading" height="14" width="100%">Pokerihuoneet</td>
-	    <td class="infoBoxHeading" height="14" nowrap="nowrap"><img src="images/pixel_trans.gif" alt="" height="14" width="11" border="0"></td>
-	  </tr>
-	</tbody></table>
-      	<table class="infoBox" cellpadding="1" cellspacing="0" width="100%" border="0">
-	  <tbody><tr>
-	    <td><table class="infoBoxContents" cellpadding="3" cellspacing="0" width="100%" border="0">
-	  <tbody><tr>
-<td><img src="images/pixel_trans.gif" alt="" height="1" width="100%" border="0"></td>
-</tr>
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+  <tbody><tr>
+    <td class="infoBoxHeading" height="14"><img src="images/infobox/corner_right_left.gif" alt="" height="14" width="11" border="0"></td>
+    <td class="infoBoxHeading" height="14" width="100%">Pokerihuoneet</td>
+    <td class="infoBoxHeading" height="14" nowrap="nowrap"><img src="images/pixel_trans.gif" alt="" height="14" width="11" border="0"></td>
+    </tr>
+  </tbody>
+</table>
+<table class="infoBox" cellpadding="1" cellspacing="0" width="100%" border="0">
+  <tbody>
+    <tr>
+    <td>
+    <table class="infoBoxContents" cellpadding="3" cellspacing="0" width="100%" border="0">
+      <tbody>
 <?php
 
 global $rooms;
 
 $count=1;
+$color=false;
+$html_color='';
 foreach( $rooms as $room )
 {
-
-print('	  <tr> ');
-print('	    <td class="boxText">'. $count .'. <a href="'.$room[2].'"><img src="http://127.0.0.1/~kaartine/rooms/'.$room[1].'" alt="" border="0"></a><a href="'. $room[2].'">'. $room[0] .'</a><br /><br /></td>');
-print('	  </tr>');
-$count++;
+  if( $color )
+  {
+    $html_color='style="background-color:#77a8d0"';
+  }
+  else
+  {
+    $html_color='style="background-color:#d6e7f5"';
+  }
+  print('	  <tr '. $html_color .'>');
+  print('	    <td style="width: 16px; padding-left: 2px; padding-right: 2px; font-weight: bold; font-size: 1.1em;" '. $html_color .'><b>'. $count .'.</b><td><a href="'.$room[2].'"><img src="http://127.0.0.1/~kaartine/rooms/'.$room[1].'" alt="" border="0"></a></td><td width="270px"'. $html_color .' "><a href="'. $room[2].'"><b>'. $room[0] .'</b></a><img src="images/pixel_trans.gif" alt="" height="1" width="100%" border="0"><br />'. $room[3].'</td><td><img src="http://127.0.0.1/~kaartine/rooms/download.png" border="0">');
+  print('	  </tr>');
+  $count++;
+  $color=!$color;
 }
 ?>
-	   <tr>
-   <td><img src="images/pixel_trans.gif" alt="" height="1" width="100%" border="0"></td>
+      </tbody>
+    </table>
+  </td>
   </tr>
-</tbody></table>
- </td>
- </tr>
-</tbody></table>
+  </tbody>
+</table>
+
